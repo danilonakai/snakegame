@@ -5,8 +5,8 @@ window.onload = function() {
     const velocity = 1; // quantas casas anda a cada vez que o jogo stage atualizar
     var moveX = moveY = 0; //Velocidade para cada lado
     var snakeX = snakeY = 10; //Ponto de inicio
-    var pieceSize = 20; //Tamanho de cada peça
-    var pieceQuantity = 20; //Quantidade de peças que tem no stage
+    var pieceSize = 25; //Tamanho de cada peça
+    var pieceQuantity = 25; //Quantidade de peças que tem no stage
     var orangeX = orangeY = 18;
 
     var trail = []; //Rastro da cobra
@@ -33,15 +33,15 @@ window.onload = function() {
         }
         
         // Fill the stage
-        context.fillStyle = "black";
+        context.fillStyle = "#2d3436";
         context.fillRect(0, 0, stage.width, stage.height);
 
-        // Fill orange
-        context.fillStyle = "orange";
+        // Fill goal
+        context.fillStyle = "#ffeaa7";
         context.fillRect(orangeX * pieceSize, orangeY * pieceSize, pieceSize, pieceSize);
 
         // Fill snake
-        context.fillStyle = "gray";
+        context.fillStyle = "#fdcb6e";
         for(var i = 0; i < trail.length; i++){
             context.fillRect(trail[i].x * pieceSize, trail[i].y * pieceSize, pieceSize, pieceSize);
             if(trail[i].x == snakeX && trail[i].y == snakeY){
