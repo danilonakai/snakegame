@@ -1,3 +1,21 @@
+var points = 0;
+var best = 0;
+
+function sum_points(add){
+    points = (add - 5) * 10;
+    
+    if(points > best){
+        best = points;
+    }
+
+    document.querySelector('#points strong').textContent = points;
+    document.querySelector('#best strong').textContent = best;
+}
+function reset_points(){
+    points = 0;
+    document.querySelector('#points strong').textContent = points;
+}
+
 window.onload = function() {
     var stage = document.querySelector('#stage');
     var context = stage.getContext("2d");
@@ -7,7 +25,7 @@ window.onload = function() {
     var snakeX = snakeY = 10; //Ponto de inicio
     var pieceSize = 25; //Tamanho de cada peça
     var pieceQuantity = 25; //Quantidade de peças que tem no stage
-    var orangeX = orangeY = 18;
+    var appleX = appleY = 18;
 
     var trail = []; //Rastro da cobra
     var tail = 5; //Rabo da cobra
@@ -33,20 +51,21 @@ window.onload = function() {
         }
         
         // Fill the stage
-        context.fillStyle = "#2d3436";
+        context.fillStyle = "#ffdc6e";
         context.fillRect(0, 0, stage.width, stage.height);
 
-        // Fill goal
-        context.fillStyle = "#ffeaa7";
-        context.fillRect(orangeX * pieceSize, orangeY * pieceSize, pieceSize, pieceSize);
+        // Fill apple
+        context.fillStyle = "#d63031";
+        context.fillRect(appleX * pieceSize, appleY * pieceSize, pieceSize, pieceSize);
 
         // Fill snake
-        context.fillStyle = "#fdcb6e";
+        context.fillStyle = "#252525";
         for(var i = 0; i < trail.length; i++){
             context.fillRect(trail[i].x * pieceSize, trail[i].y * pieceSize, pieceSize, pieceSize);
             if(trail[i].x == snakeX && trail[i].y == snakeY){
                 moveX = moveY = 0;
                 tail = 5;
+                reset_points();
             }
         }
         
@@ -56,33 +75,43 @@ window.onload = function() {
             trail.shift();
         }
 
-        if(orangeX == snakeX && orangeY == snakeY){
+        if(appleX == snakeX && appleY == snakeY){
             tail++;
-            orangeX = Math.floor(Math.random() * pieceQuantity);
-            orangeY = Math.floor(Math.random() * pieceQuantity);
+            sum_points(tail);
+            count = (tail - 5) * 10;
+            appleX = Math.floor(Math.random() * pieceQuantity);
+            appleY = Math.floor(Math.random() * pieceQuantity);
         }
     }
 
     function keyPush(event){
         switch(event.keyCode){
             case 37: //left
-                moveX = -velocity;
-                moveY = 0;
+                if(moveX != 1){
+                    moveX = -velocity;
+                    moveY = 0;
+                }
             break;
             
             case 38: //up
-                moveX = 0;
-                moveY = -velocity;
+                if(moveY != 1){
+                    moveX = 0;
+                    moveY = -velocity;
+                }
             break;
 
             case 39: //right
-                moveX = velocity;
-                moveY = 0;
+                if(moveX != -1){
+                    moveX = velocity;
+                    moveY = 0;
+                }
             break;
 
             case 40: //down
-                moveX = 0;
-                moveY = velocity;
+                if(moveY != -1){
+                    moveX = 0;
+                    moveY = velocity;
+                }
             break;
         }
     }

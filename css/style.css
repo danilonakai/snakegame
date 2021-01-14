@@ -3,14 +3,30 @@ body{
     padding:0;
     text-align: center;
     font-family: monospace;
+    background-color:#252525;
+    color:#ffdc6e;
 }
 h1{
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
 h3{
     font-size: 15px;
-    margin-bottom: 30px;
+    margin: 10px 0 20px 0;
+    color:#fff;
+}
+span{
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#best{
+    color: #252525;
+    padding: 10px;
+    background-color: #ffdc6e;
+}
+#points{
+    margin-bottom:40px;
 }
 #stage{
     margin:0 auto;
