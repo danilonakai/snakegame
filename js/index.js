@@ -1,15 +1,17 @@
 var points = 0;
-var best = 0;
+var best = localStorage.getItem('best');
 
-function sum_points(add){
+function sum_points(add){    
     points = (add - 5) * 10;
     
     if(points > best){
         best = points;
+        localStorage.setItem('best',best);
     }
 
     document.querySelector('#points strong').textContent = points;
     document.querySelector('#best strong').textContent = best;
+
 }
 function reset_points(){
     points = 0;
@@ -17,6 +19,12 @@ function reset_points(){
 }
 
 window.onload = function() {
+    if(best == undefined){
+        best = 0;
+    }else{
+        document.querySelector('#best strong').textContent = best;
+    }
+
     var stage = document.querySelector('#stage');
     var context = stage.getContext("2d");
 
