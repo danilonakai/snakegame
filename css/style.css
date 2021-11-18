@@ -6,28 +6,28 @@ body{
     background-color:#252525;
     color:#ffdc6e;
 }
-h1{
+header{
+    padding: 15px 0;
+}
+header h1{
     font-size: 40px;
-    margin-bottom: 0;
+    margin: 0;
 }
-h3{
+header h3{
     font-size: 15px;
-    margin: 10px 0 20px 0;
-    color:#fff;
+    color: #fff;
+    margin-bottom: 15px;
 }
-span{
+header span{
     display: inline-block;
     font-size: 20px;
-    margin-bottom: 5px;
 }
-#best{
+header #best{
     color: #252525;
     padding: 10px;
     background-color: #ffdc6e;
 }
-#points{
-    margin-bottom:40px;
-}
+
 #stage{
     margin:0 auto;
     display:block;
