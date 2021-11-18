@@ -151,3 +151,7 @@ window.onload = ()=>{
 window.onresize = ()=> {
     load_board();
 }
+
+document.addEventListener('swiped', function(e) {
+    console.log(e.detail.dir); // the element that was swiped
+});
