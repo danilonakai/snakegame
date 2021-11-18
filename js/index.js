@@ -14,7 +14,14 @@ var trail = []; //Rastro da cobra
 var tail = 5; //Rabo da cobra
 
 function load_board(){
-    let board_size = window.innerHeight - document.querySelector('header').clientHeight;
+    let board_size;
+
+    if(window.innerWidth > window.innerHeight - document.querySelector('header').clientHeight){
+        board_size = window.innerHeight - document.querySelector('header').clientHeight;
+    }else{
+        board_size = window.innerWidth;
+    }
+
     document.querySelector('#stage').width = board_size;
     document.querySelector('#stage').height = board_size;
 }
