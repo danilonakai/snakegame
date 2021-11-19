@@ -9,6 +9,7 @@ body{
 }
 header{
     padding: 15px 0;
+    width: 100%;
 }
 header h1{
     font-size: 40px;
@@ -18,6 +19,17 @@ header h3{
     font-size: 15px;
     color: #fff;
     margin-bottom: 15px;
+}
+header h3.mobile-explanation{
+    display:none;
+}
+@media screen and (max-width:500px){
+    header h3.mobile-explanation{
+        display:block;
+    }
+    header h3.desktop-explanation{
+        display:none;
+    }
 }
 header span{
     display: inline-block;
