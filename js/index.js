@@ -80,38 +80,86 @@ function game(){
 
 function on_keyPush(event){
     switch(event.keyCode){
-        case 37: //left
-            if(moveX != 1){
-                moveX = -velocity;
-                moveY = 0;
-            }
+        case 37:
+            move('left');
         break;
         
-        case 38: //up
+        case 38:
+            move('up');
+        break;
+
+        case 39:
+            move('right');
+        break;
+
+        case 40:
+            move('down');
+        break;
+    }
+}
+
+function on_swipe(){
+    let targ = document.querySelector('#stage');
+    let touchstartX;
+    let touchstartY;
+    let touchendX;
+    let touchendY;
+
+    targ.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+        touchstartY = e.changedTouches[0].screenY;
+    });
+
+    targ.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        touchendY = e.changedTouches[0].screenY;
+    
+        if(Math.abs(touchstartX - touchendX) > Math.abs(touchstartY - touchendY)){
+            if(touchstartX > touchendX){
+                move('left');
+            }else{
+                move('right');
+            }
+        }else{
+            if(touchstartY > touchendY){
+                move('up');
+            }else{
+                move('down');
+            }
+        }
+    });
+}
+
+function move(direction){
+    switch(direction){
+        case 'up':
             if(moveY != 1){
                 moveX = 0;
                 moveY = -velocity;
             }
         break;
 
-        case 39: //right
+        case 'right':
             if(moveX != -1){
                 moveX = velocity;
                 moveY = 0;
             }
         break;
 
-        case 40: //down
+        case 'down':
             if(moveY != -1){
                 moveX = 0;
                 moveY = velocity;
             }
         break;
-    }
-}
 
-function on_swipe(){
-    
+        case 'left':
+            if(moveX != 1){
+                moveX = -velocity;
+                moveY = 0;
+            }
+        break;
+    }
 }
 
 function sum_points(add){    
@@ -142,7 +190,7 @@ window.onload = ()=>{
         document.querySelector('#best strong').textContent = best;
     }
 
-    
+    on_swipe();
 
     document.addEventListener("keydown", event=>on_keyPush(event));
     setInterval(()=>game(), 60);
@@ -151,7 +199,3 @@ window.onload = ()=>{
 window.onresize = ()=> {
     load_board();
 }
-
-document.addEventListener('swiped', function(e) {
-    console.log(e.detail.dir); // the element that was swiped
-});
