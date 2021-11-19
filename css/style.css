@@ -5,6 +5,7 @@ body{
     font-family: monospace;
     background-color:#252525;
     color:#ffdc6e;
+    overscroll-behavior: contain;
 }
 header{
     padding: 15px 0;
