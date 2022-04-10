@@ -2,7 +2,7 @@ body{
     margin:0;
     padding:0;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Work Sans', sans-serif;
     background-color:#252525;
     color:#ffdc6e;
     overscroll-behavior: contain;
@@ -14,11 +14,13 @@ header{
 header h1{
     font-size: 40px;
     margin: 0;
+    font-weight: 500;
 }
 header h3{
     font-size: 15px;
     color: #fff;
     margin-bottom: 15px;
+    font-weight: 400;
 }
 header h3.mobile-explanation{
     display:none;
