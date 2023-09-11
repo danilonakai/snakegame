@@ -16,6 +16,14 @@ header h1{
     margin: 0;
     font-weight: 500;
 }
+header h2{
+    font-size: 14px;
+    color:#bebebe;
+    margin:0;
+}
+header h2 a{
+    color:#bebebe;
+}
 header h3{
     font-size: 15px;
     color: #fff;

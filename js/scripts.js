@@ -17,7 +17,7 @@ function load_board(){
     let board_size;
 
     if(window.innerWidth > window.innerHeight - document.querySelector('header').clientHeight){
-        board_size = window.innerHeight - document.querySelector('header').clientHeight;
+        board_size = window.innerHeight - (document.querySelector('header').clientHeight + 20);
     }else{
         board_size = window.innerWidth;
     }
