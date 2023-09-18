@@ -34,6 +34,9 @@ header h3.mobile-explanation{
     display:none;
 }
 @media screen and (max-width:500px){
+    html,body{
+        overflow: hidden;
+    }
     header h3.mobile-explanation{
         display:block;
     }
